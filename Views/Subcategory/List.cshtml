@@ -1,0 +1,27 @@
+﻿@model SubcategoryViewModel
+
+<h2>@Model.CategoryName Subcategories</h2>
+
+<a asp-controller="Subcategory"
+   asp-action="Details"
+   asp-route-categoryId="@Model.CategoryId">Add New Subcategory</a>
+
+<div class="table">
+	<table>
+		<tr>
+			<th>Subcategory</th>
+			<th>Description</th>
+		</tr>
+		@foreach (Subcategory subcategory in Model.Subcategories)
+		{
+			<tr>
+				<td>@subcategory.SubcategoryName</td>
+				<td>@subcategory.SubcategoryDescription</td>
+			</tr>
+		}
+	</table>
+</div>
+
+<a asp-controller="Category"
+   asp-action="List"
+   asp-route-budgetId="@Model.BudgetId">Back</a>

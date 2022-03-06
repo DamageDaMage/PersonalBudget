@@ -1,0 +1,41 @@
+﻿@model BudgetViewModel
+
+<h2>@Model.Budget.BudgetName</h2>
+
+<h4>Running Total: $@Model.Budget.RunningTotal</h4>
+
+<div class="caption">
+	<a asp-controller="Category"
+	   asp-action="List"
+	   asp-route-budgetId="@Model.Budget.BudgetId">View Budget Categories</a>
+
+	<a asp-controller="Budget"
+	   asp-action="AddLineItem"
+	   asp-route-budgetId="@Model.Budget.BudgetId">Add Line Item</a>
+
+	<div class="table">
+		<table>
+			<tr>
+				<th>Date</th>
+				<th>Source</th>
+				<th>Description</th>
+				<th>Category</th>
+				<th>Subcategory</th>
+				<th>Transaction Type</th>
+				<th>Amount</th>
+			</tr>
+			@foreach (LineItem lineItem in Model.LineItems)
+			{
+				<tr>
+					<td>@lineItem.Date</td>
+					<td>@lineItem.Source</td>
+					<td>@lineItem.Description</td>
+					<td>@lineItem.Category.CategoryName</td>
+					<td>@lineItem.Subcategory.SubcategoryName</td>
+					<td>@lineItem.TransactionType</td>
+					<td>@lineItem.Amount</td>
+				</tr>
+			}
+		</table>
+	</div>
+</div>

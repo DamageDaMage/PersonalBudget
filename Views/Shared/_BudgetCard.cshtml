@@ -1,0 +1,10 @@
+﻿@model Budget
+	<div class="col-sm-4 col-lg-4 col-md-4">
+		<div class="caption">
+			<h3>
+				<a asp-controller="Budget"
+				   asp-action="Details"
+				   asp-route-id="@Model.BudgetId">@Model.BudgetName</a>
+			</h3>
+		</div>
+	</div>

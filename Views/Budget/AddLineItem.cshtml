@@ -1,0 +1,53 @@
+﻿@model AddLineItemViewModel
+
+@using (Html.BeginForm("AddLineItem", "Budget", FormMethod.Post))
+{
+	<h5 class="modal-title">Add New Category</h5>
+	<div class="form-group">
+		<label>Date:</label>
+		@Html.EditorFor(model => model.LineItem.Date, new { id = "item_date", @class = "form-control" })
+	</div>
+	<div class="form-group">
+		<label>Source:</label>
+		@Html.TextBoxFor(model => model.LineItem.Source, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		<label>Description:</label>
+		@Html.TextBoxFor(model => model.LineItem.Description, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		<label>Category:</label>
+		@Html.DropDownListFor(model => model.LineItem.CategoryId, Model.Categories, "Category", new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		<label>Subcategory:</label>
+		@Html.DropDownListFor(model => model.LineItem.SubcategoryId, Model.Subcategories, "Subcategory", new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		<label>Transaction Type:</label>
+		@Html.DropDownListFor(model => model.LineItem.TransactionType, Model.TransactionTypes, "Transaction Type", new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		<label>Amount:</label>
+		@Html.EditorFor(model => model.LineItem.Amount, new { @class = "form-control" })
+	</div>
+	<div>
+		@Html.HiddenFor(model => model.LineItem.BudgetId)
+	</div>
+	<div>
+		@Html.HiddenFor(model => model.LineItem.LineItemId)
+	</div>
+	<div>
+		@Html.HiddenFor(model => model.BudgetId)
+	</div>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">Add</button>
+		<button type="button" class="btn btn-secondary"><a asp-action="Details" asp-controller="Budget" asp-route-id="@Model.BudgetId">Cancel</a></button>
+	</div>
+
+	<script>
+		$(document).ready(function () {
+			$("#item_date").datepicker({ dateFormat: 'mm/dd/yy' });
+		})
+	</script>
+}

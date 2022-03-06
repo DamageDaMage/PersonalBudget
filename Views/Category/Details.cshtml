@@ -1,0 +1,24 @@
+﻿@model Category
+
+@using (Html.BeginForm("Details", "Category", FormMethod.Post))
+{
+	<h5 class="modal-title">Add New Category</h5>
+	<div class="form-group">
+		<label>Category Name:</label>
+		@Html.TextBoxFor(c => c.CategoryName, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		<label>Category Description:</label>
+		@Html.TextBoxFor(c => c.CategoryDescription, new { @class = "form-control" })
+	</div>
+	<div>
+		@Html.HiddenFor(c => c.CategoryId)
+	</div>
+	<div>
+		@Html.HiddenFor(c => c.BudgetId)
+	</div>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">Add</button>
+		<button type="button" class="btn btn-secondary"><a asp-action="List" asp-controller="Category" asp-route-budgetId="@Model.BudgetId">Cancel</a></button>
+	</div>
+}

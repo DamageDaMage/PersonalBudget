@@ -1,0 +1,24 @@
+﻿@model Subcategory
+
+@using (Html.BeginForm("Details", "Subcategory", FormMethod.Post))
+{
+	<h5 class="modal-title">Add New Subcategory</h5>
+	<div class="form-group">
+		<label>Subcategory Name:</label>
+		@Html.TextBoxFor(c => c.SubcategoryName, new { @class = "form-control" })
+	</div>
+	<div class="form-group">
+		<label>Subcategory Description:</label>
+		@Html.TextBoxFor(c => c.SubcategoryDescription, new { @class = "form-control" })
+	</div>
+	<div>
+		@Html.HiddenFor(c => c.SubcategoryId)
+	</div>
+	<div>
+		@Html.HiddenFor(c => c.CategoryId)
+	</div>
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary">Add</button>
+		<button type="button" class="btn btn-secondary"><a asp-action="List" asp-controller="Subcategory" asp-route-categoryId="@Model.CategoryId">Cancel</a></button>
+	</div>
+}
